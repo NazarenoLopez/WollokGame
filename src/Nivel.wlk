@@ -29,7 +29,7 @@ object nivelUno{
 		game.addVisual(elemento)}
 		movimiento.configurarFlechas(golfista)
 		
-		//game.onTick(4000,"movimiento",{arena1.movete()})
-		//keyboard.f().onPressDo {(golfista.cuantaFuerza())}
+		game.onTick(4000,"movimiento",{arena1.movete()})
+		keyboard.f().onPressDo {(golfista.cuantaFuerza())}
 }
 }

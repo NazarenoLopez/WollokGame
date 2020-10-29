@@ -65,9 +65,9 @@ class Arena inherits Elementos{
 	}
 
 
-const arena1 = new Arena (position = new Position =(x=4,y=9))
-const arena2 = new Arena (position = new Position = (x=10,y=8))
-const arena3 = new Arena (position = new Position = (x=10,y=5))
+const arena1 = new Arena (position = new Position (x=4,y=9))
+const arena2 = new Arena (position = new Position (x=10,y=8))
+const arena3 = new Arena (position = new Position (x=10,y=5))
 
 
 class Agua inherits Elementos{
@@ -78,9 +78,9 @@ class Agua inherits Elementos{
 	}
 }
 
-const agua1 = new Agua (x=2,y=5)
-const agua2 = new Agua (x=7,y=14)
-const agua3 = new Agua (x=14,y=12)
+const agua1 = new Agua (position = new Position (x=2,y=5))
+const agua2 = new Agua (position = new Position(x=7,y=14))
+const agua3 = new Agua (position = new Position(x=14,y=12))
 
 
 class Estrella inherits Elementos {
@@ -91,9 +91,9 @@ class Estrella inherits Elementos {
 	golfista.sumarEstrellas()
 	}
 }
-const estrella1 = new Estrella (x=5,y=11)
-const estrella2 = new Estrella (x=4,y=13)
-const estrella3 = new Estrella (x=8,y=15)
+const estrella1 = new Estrella (position = new Position (x=5,y=11))
+const estrella2 = new Estrella (position = new Position (x=4,y=13))
+const estrella3 = new Estrella (position = new Position (x=8,y=15))
 
 
 
@@ -105,9 +105,9 @@ class Rayo inherits Elementos {
 	}
 }
 
-const rayo1 = new Rayo (x=2,y=8)
-const rayo2 = new Rayo (x=3,y=6)
-const rayo3 = new Rayo (x=9,y=7)
+const rayo1 = new Rayo (position = new Position (x=2,y=8))
+const rayo2 = new Rayo (position = new Position (x=3,y=6))
+const rayo3 = new Rayo (position = new Position (x=9,y=7))
 
 
 
