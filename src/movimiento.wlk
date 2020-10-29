@@ -1,4 +1,5 @@
 import wollok.game.*
+import Nivel.*
 object izquierda { 
 	method siguiente(position) = position.left(1) 
 	method opuesto() = derecha
@@ -33,3 +34,5 @@ object movimiento {
 	}	
 	
 }
+
+

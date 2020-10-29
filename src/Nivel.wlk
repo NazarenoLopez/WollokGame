@@ -21,6 +21,7 @@ object nivelUno{
 	
 		game.clear()
 		game.boardGround("fondo.jpg")
+		// no carga la foto del fondo.
 		
 		game.addVisual(golfista)  
 		game.addVisual(hoyo)
@@ -28,21 +29,7 @@ object nivelUno{
 		game.addVisual(elemento)}
 		movimiento.configurarFlechas(golfista)
 		
-		//Visuales	
-		/*    
-		
-		game.addVisual(arena1)
-		game.addVisual(arena2)
-		game.addVisual(arena3)
-		game.addVisual(agua1)
-		game.addVisual(agua2)
-		game.addVisual(agua3)
-		game.addVisual(estrella1)
-		game.addVisual(estrella2)
-		game.addVisual(estrella3)
-		game.addVisual(rayo1)
-		game.addVisual(rayo2)
-	game.addVisual(rayo3)*/
-		
+		//game.onTick(4000,"movimiento",{arena1.movete()})
+		//keyboard.f().onPressDo {(golfista.cuantaFuerza())}
 }
 }
