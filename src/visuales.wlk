@@ -7,10 +7,7 @@ object golfista {
 	var property position = game.origin()
 	method image() = "Golfista.png"
 
-method move(nuevaPosicion) {
-		//energia -= self.energiaParaVolar(position.distance(nuevaPosicion))
-		self.position(nuevaPosicion)
-	}
+}
 /* 	method sumaFuerza(cantidad) { fuerza += cantidad }
 
 	method restaFuerza(cantidad) {
@@ -46,7 +43,7 @@ method move(nuevaPosicion) {
 	method cuantaFuerza(){
 		game.say(self, "Tengo " + self.fuerza() + "de fuerza!")
 	}
-*/}
+*/
 object hoyo {
 	method image() = "Hoyo.png"
 	method position()= game.at(16,14)

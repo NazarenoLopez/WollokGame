@@ -1,10 +1,9 @@
 import wollok.game.*
 //import configuraciones.*
 //import visuales.*
-import example.*
-program golfito{
-	
+import Nivel.*
 
+program golfito{
 	nivelUno.inicio()
 	game.start()
 }

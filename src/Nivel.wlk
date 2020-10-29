@@ -1,5 +1,6 @@
 import wollok.game.*
 import visuales.*
+import movimiento.*
 object nivelUno{
 	
 	const anchoTotal = 18
@@ -17,18 +18,19 @@ object nivelUno{
 
 		
 	method configurate() {
-	//	CONFIGURACI�N DEL JUEGO
+	
 		game.clear()
-		game.width(anchoTotal)
-		game.height(altoTotal)
-		game.boardGround("Fondo.jpg")
+		game.boardGround("fondo.jpg")
 		
-				
-		
+		game.addVisual(golfista)  
+		game.addVisual(hoyo)
+		 [arena1,arena2,arena3,agua1,agua2,agua3,estrella1,estrella2,estrella3,rayo1,rayo2,rayo3].forEach { elemento =>  
+		game.addVisual(elemento)}
+		movimiento.configurarFlechas(golfista)
 		
 		//Visuales	
-		   
-		game.addVisual(hoyo)
+		/*    
+		
 		game.addVisual(arena1)
 		game.addVisual(arena2)
 		game.addVisual(arena3)
@@ -40,17 +42,7 @@ object nivelUno{
 		game.addVisual(estrella3)
 		game.addVisual(rayo1)
 		game.addVisual(rayo2)
-		game.addVisual(rayo3)
-		game.addVisual(golfista)   
+	game.addVisual(rayo3)*/
 		
-		keyboard.up().onPressDo { golfista.move(golfista.position().up(1)) }
-		keyboard.down().onPressDo { golfista.move(golfista.position().down(1)) }
-		keyboard.left().onPressDo { golfista.move(golfista.position().left(1)) }
-		keyboard.right().onPressDo { golfista.move(golfista.position().right(1)) }
-		
-		
-		game.start()
-		
-	}
-
+}
 }
