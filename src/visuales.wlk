@@ -1,39 +1,43 @@
 import wollok.game.*
 import Nivel.*
+import movimiento.*
 object golfista {
-	var property fuerza = 0
+	var property fuerza = 200
 	var property estrellas = 0
-	
+
 	var property position = game.origin()
 	method image() = "Golfista.png"
 
-
- 	method sumaFuerza(cantidad) { fuerza += cantidad }
+ 	method sumaFuerza(cantidad) { fuerza = fuerza + cantidad }
 
 	method restaFuerza(cantidad) {
 		if (cantidad > fuerza)
-			throw new Exception(message = "No tengo suficiente fuerza para jugar")
+			nivelUno.gameOver()
 		fuerza -= cantidad
 	}
-	
-	method sumarEstrellas()
-	{
-		estrellas = {estrellas + 1}
-	}
 
-/*/	method ganarOPerder() {
-		if(estrellas== 4)
-	 	nivelUno.hasGanado()
-		else 
-		nivelUno.gameOver()
-	}*/
+	method fuerzaParaCaminar(distancia) = 10 + 5 * distancia
+	
+	method irA(nuevaPosicion) {
+		fuerza -= self.fuerzaParaCaminar(position.distance(nuevaPosicion))
+		self.position(nuevaPosicion)
+}
+	method sumarEstrellas(cantidadEstrellas) = { estrellas += cantidadEstrellas}
+
+	method perder() {
+		if (fuerza < 0)
+			nivelUno.gameOver()
+	}
 	
 	method cuantaFuerza(){
-		game.say(self, "Tengo " + self.fuerza() + "de fuerza!")
+		game.say(self, "Tengo " + self.fuerza() + " de fuerza!")
+	}
+	method cuantasEstrellas(){
+		game.say(self, "Tengo " + self.estrellas() + " estrellas")
 	}
 }
 class Elementos {
-		var property position = game.origin()
+		var property position = ubicacionesAleatorias.position()
 		method movete() {
 		var a = 0.randomUpTo(18).truncate(0)
 		var b = 0.randomUpTo(15).truncate(0)
@@ -46,13 +50,15 @@ class Elementos {
 
 
 
-
-
-
-
 object hoyo {
 	method image() = "Hoyo.png"
 	method position()= game.at(16,14)
+	method colisionadoPor(golfista){
+		if (golfista.estrellas() == 3)
+		nivelUno.hasGanado()
+		else
+		nivelUno.gameOver()
+	}
 	}
 
 
@@ -65,9 +71,9 @@ class Arena inherits Elementos{
 	}
 
 
-const arena1 = new Arena (position = new Position (x=4,y=9))
-const arena2 = new Arena (position = new Position (x=10,y=8))
-const arena3 = new Arena (position = new Position (x=10,y=5))
+const arena1 = new Arena ()
+const arena2 = new Arena ()
+const arena3 = new Arena ()
 
 
 class Agua inherits Elementos{
@@ -75,40 +81,57 @@ class Agua inherits Elementos{
 	override method image()= "Agua.png"
 	method colisionadoPor(golfista){
 	golfista.restaFuerza(self.fuerza())
+	golfista.position(game.origin())
 	}
 }
 
-const agua1 = new Agua (position = new Position (x=2,y=5))
-const agua2 = new Agua (position = new Position(x=7,y=14))
-const agua3 = new Agua (position = new Position(x=14,y=12))
-
+const agua1 = new Agua()
+const agua2 = new Agua()
+const agua3 = new Agua()
 
 class Estrella inherits Elementos {
-	var property fuerza = 50
+	var property fuerza = 10
+	var property estrella = 1
 	override method image() = "Estrella.png"
 	method colisionadoPor(golfista){
+	golfista.sumarEstrellas(self.estrella())
 	golfista.sumaFuerza(self.fuerza())
-	golfista.sumarEstrellas()
 	}
 }
-const estrella1 = new Estrella (position = new Position (x=5,y=11))
-const estrella2 = new Estrella (position = new Position (x=4,y=13))
-const estrella3 = new Estrella (position = new Position (x=8,y=15))
 
+const estrella1 = new Estrella()
+const estrella2 = new Estrella()
+const estrella3 = new Estrella()
+const estrella4 = new Estrella()
 
 
 class Rayo inherits Elementos {
-	var property fuerza = 20
+	var property fuerza = 5
 	override method image() = "Rayo.png"
 	method colisionadoPor(golfista){
 	golfista.sumaFuerza(self.fuerza())
 	}
 }
+const rayo1 = new Rayo()
+const rayo2 = new Rayo()
+const rayo3 = new Rayo()
+const rayo4 = new Rayo()
 
-const rayo1 = new Rayo (position = new Position (x=2,y=8))
-const rayo2 = new Rayo (position = new Position (x=3,y=6))
-const rayo3 = new Rayo (position = new Position (x=9,y=7))
+object fondo {
+	var property position = game.origin()
+	var property image = "Inicio.png"
+	method image() = image
+}
 
 
+object ganar {
+	var property position = game.origin()
+	var property image = "minionFeliz.png"
+	method image() = image
+}
 
-
+object perder {
+	var property position = game.origin()
+	var property image = "minionTriste.png"
+	method image() = image
+}
