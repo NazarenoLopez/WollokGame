@@ -22,7 +22,7 @@ object golfista {
 		fuerza -= self.fuerzaParaCaminar(position.distance(nuevaPosicion))
 		self.position(nuevaPosicion)
 }
-	method sumarEstrellas(cantidadEstrellas) = { estrellas += cantidadEstrellas}
+	method sumarEstrellas(cantidadEstrellas)  { estrellas += cantidadEstrellas}
 
 	method perder() {
 		if (fuerza < 0)
@@ -133,5 +133,10 @@ object ganar {
 object perder {
 	var property position = game.origin()
 	var property image = "minionTriste.png"
+	method image() = image
+}
+
+object instrucciones {
+	var property image = "instrucciones.png"
 	method image() = image
 }
