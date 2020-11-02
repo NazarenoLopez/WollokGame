@@ -13,6 +13,7 @@ object nivelUno{
 		game.height(altoTotal)
 		game.boardGround("fondo.png")
 		self.agregarFondo(fondo)
+		keyboard.i().onPressDo{self.agregarFondo(instrucciones)}
 		
 		keyboard.s().onPressDo{self.configurate()}
 	}	

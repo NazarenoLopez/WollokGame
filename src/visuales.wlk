@@ -119,7 +119,7 @@ const rayo4 = new Rayo()
 
 object fondo {
 	var property position = game.origin()
-	var property image = "Inicio.png"
+	var property image = "Iniciox.png"
 	method image() = image
 }
 
@@ -137,6 +137,7 @@ object perder {
 }
 
 object instrucciones {
+	var property position = game.origin()
 	var property image = "instrucciones.png"
 	method image() = image
 }
