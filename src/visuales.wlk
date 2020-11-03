@@ -129,7 +129,7 @@ object ganar {
 
 object perder {
 	var property position = game.origin()
-	var property image = "minionTriste.png"
+	var property image = "minionTristex.png"
 	method image() = image
 }
 
