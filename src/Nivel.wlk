@@ -14,7 +14,7 @@ object nivelUno{
 		game.boardGround("fondo.png")
 		self.agregarFondo(fondo)
 		keyboard.i().onPressDo{self.agregarFondo(instrucciones)}
-		
+		keyboard.r().onPressDo{self.removerFondo(instrucciones)}
 		keyboard.s().onPressDo{self.configurate()}
 	}	
 method agregarFondo(imagen){
@@ -49,12 +49,10 @@ method removerFondo(imagen){
 method hasGanado(){
 		game.clear()
 		self.agregarFondo(ganar)
-		keyboard.r().onPressDo{self.inicio()}
-		keyboard.s().onPressDo{game.stop()}
+		keyboard.e().onPressDo{game.stop()}
 	}
 method gameOver(){
 		game.clear()
      	self.agregarFondo(perder)
-		keyboard.r().onPressDo{self.inicio()}
-		keyboard.s().onPressDo{game.stop()}
+		keyboard.e().onPressDo{game.stop()}
 }}

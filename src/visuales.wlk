@@ -22,7 +22,7 @@ object golfista {
 		fuerza -= self.fuerzaParaCaminar(position.distance(nuevaPosicion))
 		self.position(nuevaPosicion)
 }
-	method sumarEstrellas(cantidadEstrellas)  { estrellas += cantidadEstrellas}
+	method sumarEstrellas()  { estrellas = estrellas + 1}
 
 	method perder() {
 		if (fuerza < 0)
@@ -49,12 +49,11 @@ class Elementos {
 }
 
 
-
 object hoyo {
 	method image() = "Hoyo.png"
-	method position()= game.at(16,14)
+	method position()= game.at(17,14)
 	method colisionadoPor(golfista){
-		if (golfista.estrellas() == 3)
+		if (golfista.estrellas() >= 4)
 		nivelUno.hasGanado()
 		else
 		nivelUno.gameOver()
@@ -91,10 +90,9 @@ const agua3 = new Agua()
 
 class Estrella inherits Elementos {
 	var property fuerza = 10
-	var property estrella = 1
 	override method image() = "Estrella.png"
 	method colisionadoPor(golfista){
-	golfista.sumarEstrellas(self.estrella())
+	golfista.sumarEstrellas()
 	golfista.sumaFuerza(self.fuerza())
 	}
 }
@@ -122,7 +120,6 @@ object fondo {
 	var property image = "Iniciox.png"
 	method image() = image
 }
-
 
 object ganar {
 	var property position = game.origin()
