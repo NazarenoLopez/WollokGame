@@ -2,7 +2,7 @@ import wollok.game.*
 import Nivel.*
 import movimiento.*
 object golfista {
-	var property fuerza = 200
+	var property fuerza = 300
 	var property estrellas = 0
 
 	var property position = game.origin()
@@ -16,7 +16,7 @@ object golfista {
 		fuerza -= cantidad
 	}
 
-	method fuerzaParaCaminar(distancia) = 10 + 5 * distancia
+	method fuerzaParaCaminar(distancia) = 5 + 5 * distancia
 	
 	method irA(nuevaPosicion) {
 		fuerza -= self.fuerzaParaCaminar(position.distance(nuevaPosicion))
@@ -53,7 +53,7 @@ object hoyo {
 	method image() = "Hoyo.png"
 	method position()= game.at(17,14)
 	method colisionadoPor(golfista){
-		if (golfista.estrellas() >= 4)
+		if (golfista.estrellas() == 4)
 		nivelUno.hasGanado()
 		else
 		nivelUno.gameOver()
@@ -66,6 +66,7 @@ class Arena inherits Elementos{
 	override method image()= "Arena.png"
 	method colisionadoPor(golfista){
 	golfista.restaFuerza(self.fuerza())
+	self.movete()
 	}
 	}
 
@@ -76,11 +77,12 @@ const arena3 = new Arena ()
 
 
 class Agua inherits Elementos{
-	var property fuerza = 100
+	var property fuerza = 20
 	override method image()= "Agua.png"
 	method colisionadoPor(golfista){
 	golfista.restaFuerza(self.fuerza())
 	golfista.position(game.origin())
+	self.movete()
 	}
 }
 
@@ -89,9 +91,10 @@ const agua2 = new Agua()
 const agua3 = new Agua()
 
 class Estrella inherits Elementos {
-	var property fuerza = 10
+	var property fuerza = 20
 	override method image() = "Estrella.png"
 	method colisionadoPor(golfista){
+	self.movete()
 	golfista.sumarEstrellas()
 	golfista.sumaFuerza(self.fuerza())
 	}
@@ -104,16 +107,19 @@ const estrella4 = new Estrella()
 
 
 class Rayo inherits Elementos {
-	var property fuerza = 5
+	var property fuerza = 10
 	override method image() = "Rayo.png"
 	method colisionadoPor(golfista){
 	golfista.sumaFuerza(self.fuerza())
+	self.movete()
 	}
 }
 const rayo1 = new Rayo()
 const rayo2 = new Rayo()
 const rayo3 = new Rayo()
 const rayo4 = new Rayo()
+const rayo5 = new Rayo()
+const rayo6 = new Rayo()
 
 object fondo {
 	var property position = game.origin()
@@ -123,7 +129,7 @@ object fondo {
 
 object ganar {
 	var property position = game.origin()
-	var property image = "minionFeliz.png"
+	var property image = "minionFeliz.jpeg"
 	method image() = image
 }
 

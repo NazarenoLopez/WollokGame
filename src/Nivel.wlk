@@ -30,7 +30,7 @@ method removerFondo(imagen){
 	
 		game.addVisual(golfista)  
 		game.addVisual(hoyo)
-		 [arena1,arena2,arena3,agua1,agua2,agua3,estrella1,estrella2,estrella3,rayo4,estrella4,rayo1,rayo2,rayo3].forEach { elemento =>  
+		 [arena1,arena2,arena3,agua1,agua2,agua3,estrella1,estrella2,estrella3,rayo4,estrella4,rayo1,rayo2,rayo3,rayo5,rayo6].forEach { elemento =>  
 		game.addVisual(elemento)}
 		movimiento.configurarFlechas(golfista)
 		
@@ -40,7 +40,7 @@ method removerFondo(imagen){
 		game.onTick(4000,"movimiento",{agua1.movete()})
 		game.onTick(2000,"movimiento",{agua2.movete()})
 		game.onTick(3000,"movimiento",{agua3.movete()})
-		game.onTick(1000,"movimiento",{golfista.restaFuerza(10)})
+		game.onTick(5000,"movimiento",{golfista.restaFuerza(5)})
 		game.whenCollideDo(golfista, {elemento => elemento.colisionadoPor(golfista)})
 		keyboard.f().onPressDo {(golfista.cuantaFuerza())}
 		keyboard.e().onPressDo {(golfista.cuantasEstrellas())}
